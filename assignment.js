@@ -8,13 +8,14 @@ console.log("Hello World! I'm printing from `assignment.js`");
 // Each address is like an (x,y) coordinate on a 10 x 10 grid
 var addresses = {
   "Veronica": [4, 1],  "Graham": [3, 2],  "Jintana": [2, 4],  
-  "Danielle": [7, 5],  "Anita": [5, 6],  "Clydean": [6, 4],  
-  "Henry": [1, 2], "Abdollah": [8, 4]
+  "Guillermo": [9, 5], "Hunter": [1, 7], "Danielle": [7, 5],  
+  "Anita": [5, 6],  "Clydean": [6, 4],  "Henry": [1, 2], 
+  "Abdollah": [8, 4], "Sima": [9, 2], "Lupe": [5, 3]
 }
-var needsPetWalked = new Set("Abdollah", "Clydean")
-var hasPet = new Set("Danielle", "Graham")
+var needsPetWalked = new Set("Abdollah", "Clydean", "Anita")
+var hasPet = new Set("Danielle", "Graham", "Guillermo")
 var needsVirtualHelp = new Set("Abdollah")
-var needsGroceries = new Set("Henry", "Anita", "Clydean")
+var needsGroceries = new Set("Henry", "Anita", "Clydean", "Sima", "Abdollah")
 
 /*
  * Returns the "distance" between two people
@@ -113,11 +114,15 @@ function getRankedVolunteer(match, volunteerArr) {
 	// var rankings = Object.keys(volunteerRankings).map(function(key) {
 	// 	return [key, volunteerRankings[key]];
 	// });
-	var rankings = Object.keys(volunteerRankings)
-	// Sort the array based on the second element
-	rankings = rankings.sort(function(a, b) { return a[1] - b[1]; });
-	console.log("sorted", volunteerRankings, rankings);
-	return rankings;		
+	var rankings = []
+	for (var key in volunteerRankings) {
+	  rankings.push([ key, volunteerRankings[key] ])
+	}
+	rankings.sort(function compare(a, b) {
+	  return a[1] - b[1]
+	})
+	console.log("sorted", volunteerRankings, rankings, rankings.keys());
+	return rankings.keys();		
 }
 
 function createMatches(volunteerInput, matchRequestInput) {
