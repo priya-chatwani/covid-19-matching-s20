@@ -110,13 +110,12 @@ function getRankedVolunteer(match, volunteerArr) {
 	for (var i = 0; i < volunteerArr.length; i++) {
 		volunteerRankings[volunteerArr[i]] = getDistance(match, volunteerArr[i]);
 	}
-	// var rankings = Object.keys(volunteerRankings).map(function(key) {
-	// 	return [key, volunteerRankings[key]];
-	// });
-	var rankings = Object.keys(volunteerRankings)
+	var rankings = Object.keys(volunteerRankings).map(function(key) {
+		return [key, volunteerRankings[key]];
+	});
+	// var rankings = Object.keys(volunteerRankings)
 	// Sort the array based on the second element
-	rankings = rankings.sort(function(a, b) { return a[1] - b[1]; });
-	console.log("sorted", volunteerRankings, rankings);
+	rankings.sort(function(a, b) { return a[1] - b[1]; });
 	return rankings;		
 }
 
@@ -144,6 +143,7 @@ function createMatches(volunteerInput, matchRequestInput) {
     while (numMatchesMade < matchRequestArr.length) {
     	// pick the first unfulfilled match request
     	var currMatchReq;
+    	console.log(currMatchReq, volToMatchReq, matchReqToVol)
     	for (var i = 0; i < matchRequestArr.length; i++) {
     		if (matchReqToVol[matchRequestArr[i]] === "free") {
     			currMatchReq = matchRequestArr[i]
@@ -152,9 +152,8 @@ function createMatches(volunteerInput, matchRequestInput) {
     	}
     	// Loop through all volunteers
     	var rankedVolunteers = getRankedVolunteer(currMatchReq, volunteerArr)
-    	console.log(volToMatchReq)
     	for (var i = 0; i < rankedVolunteers.length && matchReqToVol[currMatchReq] === "free"; i++) {
-    		var currVolunteer = rankedVolunteers[i]
+    		var currVolunteer = rankedVolunteers[i][0]
     		// Assign match request to volunteer if they are free
 	    	if (volToMatchReq[currVolunteer] === "free") {
 	    		volToMatchReq[currVolunteer] = currMatchReq
