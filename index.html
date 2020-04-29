@@ -13,15 +13,14 @@
     <body>
         <h1>CS 106s: COVID-19 Matching</h1>
         <h3>We pair seniors and immunocompromised folks with volunteers who can deliver groceries, walk pets, and virtually check in. Here, you can submit the volunteers and match requests as a comma-separated list of names.</h3>
-        <p>Available Volunteers: {Veronica, Graham, Jintana, Danielle}</p>
-        <p>Individuals Seeking Assistance: {Anita, Clydean, Henry, Abdollah}</p>
+        <p>Available Volunteers: {Veronica, Graham, Jintana, Danielle, Guillermo, Hunter}</p>
+        <p>Individuals Seeking Assistance: {Anita, Clydean, Henry, Abdollah, Sima, Lupe}</p>
         <form>
           Volunteers: <input type="text" id="volunteers"><br>
           Higher-Risk Individuals: <input type="text" id="match_requests"><br>
           <input type="button" onclick="submitMatches()" value="Match">
         </form>
-        <p style="display: none" id="match_keys"></p>
-        <p style="display: none" id="match_values"></p>
+        <p style="display: none" id="matches"></p>
         <script src="assignment.js" charset="utf-8"></script>
         <script src="background.js" charset="utf-8"></script>
     </body>
