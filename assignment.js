@@ -71,24 +71,6 @@ function getDistance(a, b) {
 }
 
 /*
- * This function determines whether the volunteer prefers a new match request over their current one.
- * For this implementation, pet walking is used as a criteria for switching. 
- * The volunteer will switch if they have a pet and this new match request needs their pet walked.
- * ----
- * Params:
- * > volunteer - name of volunteer for whom we are optimizing their match
- * > matchReq - name of volunteer's current match request
- * > newMatchReq - name of a different match request to whom volunteer is comparing their current match request
- *
- * Returns:
- * > boolean - True if volunteer wants to change their request, False if volunteer wants to keep match as is
- */
-function volPrefersNewReq(volunteer, matchReq, newMatchReq) {
-	// TODO: return True or False here. Return True if the volunteer has a pet and the new match request 
-	// needs their pet walked (and the current match request doesn't).
-}
-
-/*
  * This function sorts a dictionary by its value by converting it to an array of tuples. 
  * In JS, dictionaries cannot be sorted.
  * ----
@@ -123,6 +105,24 @@ function sortDictByValue(dict) {
 function getRankedVolunteers(matchReq, volunteerArr) {
 	// TODO: create a dictionary to save the distance between matchReq and each volunteer 
 	// Return sortRankedVolunteers(your_dict)
+}
+
+/*
+ * This function determines whether the volunteer prefers a new match request over their current one.
+ * For this implementation, pet walking is used as a criteria for switching. 
+ * The volunteer will switch if they have a pet and this new match request needs their pet walked.
+ * ----
+ * Params:
+ * > volunteer - name of volunteer for whom we are optimizing their match
+ * > matchReq - name of volunteer's current match request
+ * > newMatchReq - name of a different match request to whom volunteer is comparing their current match request
+ *
+ * Returns:
+ * > boolean - True if volunteer wants to change their request, False if volunteer wants to keep match as is
+ */
+function volPrefersNewReq(volunteer, matchReq, newMatchReq) {
+	// TODO: return True or False here. Return True if the volunteer has a pet and the new match request 
+	// needs their pet walked (and the current match request doesn't).
 }
 
 /*
