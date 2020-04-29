@@ -71,13 +71,11 @@ function getPreferences(matchReq, volunteers) {
 		for (var i = 0; i < volunteers.length; i++) {
 			distanceFrom[volunteers[i]] = getDistance(matchReq, volunteers[i])
 		}
-		console.log("list pre sorting", distanceFrom);
 		var rankings = Object.keys(distanceFrom).map(function(key) {
 			return [key, distanceFrom[key]];
 		});
 		// Sort the array based on the second element
 		rankings.sort(function(a, b) { return a[1] - b[1]; });
-		console.log("sorted", rankings);
 		return rankings;
 	}
 	// Just needs virtual help? Return any ordering
@@ -116,7 +114,10 @@ function getRankedVolunteer(match, volunteerArr) {
 	});
 	// var rankings = Object.keys(volunteerRankings)
 	// Sort the array based on the second element
-	rankings.sort(function(a, b) { return a[1] - b[1]; });
+	rankings.sort(function compare(a, b) {
+	  return a[1] - b[1]
+	})	
+	// Returns a list of tuples [volunteer name, distance] in ascending distance
 	return rankings;		
 }
 
@@ -144,7 +145,6 @@ function createMatches(volunteerInput, matchRequestInput) {
     while (numMatchesMade < matchRequestArr.length) {
     	// pick the first unfulfilled match request
     	var currMatchReq;
-    	console.log(currMatchReq, volToMatchReq, matchReqToVol)
     	for (var i = 0; i < matchRequestArr.length; i++) {
     		if (matchReqToVol[matchRequestArr[i]] === "free") {
     			currMatchReq = matchRequestArr[i]
@@ -159,7 +159,6 @@ function createMatches(volunteerInput, matchRequestInput) {
 	    	if (volToMatchReq[currVolunteer] === "free") {
 	    		volToMatchReq[currVolunteer] = currMatchReq
 	    		matchReqToVol[currMatchReq] = currVolunteer
-	    		console.log("inside if statement")
 	    		numMatchesMade += 1
 	    	} 
 	    	// this choice isn't free? See who this volunteer is matched to
@@ -171,11 +170,9 @@ function createMatches(volunteerInput, matchRequestInput) {
 	    			volToMatchReq[currVolunteer] = currMatchReq
 	    			matchReqToVol[currMatchReq] = currVolunteer
 	    			matchReqToVol[prevMatchReq] = "free"
-	    			console.log("inside else statement")
 	    		}
 	    	}
     	}
     }
-    console.log("Mapping", volToMatchReq);
 	return JSON.stringify(volToMatchReq)
 }
