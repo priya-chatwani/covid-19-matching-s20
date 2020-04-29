@@ -1,33 +1,28 @@
 <!-- CS 106s: CodeBreaking -->
 
-
 <!doctype html>
 <html>
     <head>
         <style>
-			h1 {color:blue;}
-			h3 {color:blue;}
-			p {color:blue;}
+			h1 {color:purple;}
+			h3 {color:purple;}
+			p {color:black;}
 			html * { font-family: Arial !important; }
 		</style>
     </head>
     <body>
         <h1>CS 106s: COVID-19 Matching</h1>
-        <h3>Seniors and Immunocompromised Folks Requesting Help</h3>
-        <ul>
-		  <li>Clydean</li>
-		  <li>Andrew</li>
-		  <li>Patricia</li>
-		</ul>
-        <br>
-        <h3>Volunteers Who Can Help</h3>
-        <ul>
-		  <li>Veronica</li>
-		  <li>Albert</li>
-		  <li>Benjamin</li>
-		</ul>
-        <input type="button" onclick="encryptionCracker()" value="Match">
-        <p style="display: none" id="decryptedPass"></p>
+        <h3>We pair seniors and immunocompromised folks with volunteers who can deliver groceries, walk pets, and virtually check in. Here, you can submit the volunteers and match requests as a comma-separated list of names.</h3>
+        <p>Available Volunteers: {Veronica, Graham, Jintana, Danielle, Guillermo, Hunter}</p>
+        <p>Individuals Seeking Assistance: {Anita, Clydean, Henry, Abdollah, Sima, Lupe}</p>
+        <form>
+          Volunteers: <input type="text" id="volunteers"><br>
+          Higher-Risk Individuals: <input type="text" id="match_requests"><br>
+          <input type="button" onclick="submitMatches()" value="Match">
+        </form>
+        <p style="display: none" id="match_keys"></p>
+        <p style="display: none" id="match_values"></p>
         <script src="assignment.js" charset="utf-8"></script>
+        <script src="background.js" charset="utf-8"></script>
     </body>
 </html>

@@ -74,13 +74,11 @@ function getPreferences(matchReq, volunteers) {
 		for (var i = 0; i < volunteers.length; i++) {
 			distanceFrom[volunteers[i]] = getDistance(matchReq, volunteers[i])
 		}
-		print("list pre sorting", distanceFrom);
 		var rankings = Object.keys(distanceFrom).map(function(key) {
 			return [key, distanceFrom[key]];
 		});
 		// Sort the array based on the second element
 		rankings.sort(function(a, b) { return a[1] - b[1]; });
-		print("sorted", rankings);
 		return rankings;
 	}
 	// Just needs virtual help? Return any ordering
